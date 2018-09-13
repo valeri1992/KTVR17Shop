@@ -5,6 +5,8 @@
  */
 package ktvr17shop;
 
+import Interface.ConsoleInterface;
+import Interface.Manageable;
 import classes.CustomerCreator;
 import classes.ProductCreator;
 import classes.PurchaseCreator;
@@ -24,6 +26,7 @@ public class App {
    private List <Product> products= new ArrayList <>();
    private List <Customer>customers= new ArrayList <>();
      private List <Purchase>purchases= new ArrayList <>();
+     private Manageable manager= new ConsoleInterface();
      
        public void run(){
            String repeat = "r";
@@ -42,16 +45,13 @@ public class App {
                         repeat = "r";
                         break;
                    case 1:
-                        ProductCreator productCreator= new ProductCreator();
-                        this.products.add(productCreator.returnNewProduct());
+                        this.products.add(manager.createProduct());
                         break;
                     case 2:
-                        CustomerCreator customerCreator = new CustomerCreator();
-                        this.customers.add(customerCreator.returnNewCustomer());
+                        this.customers.add(manager.createCustomer());
                         break;
                     case 3:
-                        PurchaseCreator  purchaseCreator = new PurchaseCreator();
-                        this.purchases.add(purchaseCreator.returnNewPurchase(products, customers));
+                        this.purchases.add(manager.createPurchase(products, customers));
                         break;  
                     default:
                          System.out.println("Выберите одно из действий!");

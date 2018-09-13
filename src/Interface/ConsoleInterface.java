@@ -5,6 +5,7 @@
  */
 package Interface;
 
+import Interface.Manageable;
 import classes.CustomerCreator;
 import classes.ProductCreator;
 import classes.PurchaseCreator;
@@ -29,25 +30,13 @@ public class ConsoleInterface implements Manageable{
         CustomerCreator customerCreator = new CustomerCreator();
         return customerCreator.returnNewCustomer();
     }
-    public Purchase issueBook(List<Product> products, List<Customer> customers) {
+    public Purchase createPurchase(List<Product> products, List<Customer> customers) {
         PurchaseCreator purchaseCreator = new PurchaseCreator();
         return purchaseCreator.returnNewPurchase(products, customers);
     }
 
-    @Override
-    public Purchase issueProduct(List<Product> products, List<Customer> customers) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 
-    @Override
-    public boolean ProductCreator(List<Purchase> purchases) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void returnPurchase(List<Purchase> purchases) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
    
    
 

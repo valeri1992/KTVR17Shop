@@ -18,8 +18,7 @@ import java.util.List;
 public interface Manageable {
     public Product createProduct();
     public Customer createCustomer();
-    public Purchase issueProduct(List<Product> products, List<Customer> customers);
-    public boolean ProductCreator(List<Purchase> purchases);
-    public void returnPurchase(List<Purchase> purchases);
+    public Purchase createPurchase(List<Product> products, List<Customer> customers);
+    
 }
     
