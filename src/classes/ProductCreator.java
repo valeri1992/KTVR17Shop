@@ -6,8 +6,6 @@
 package classes;
 
 import entity.Product;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -17,16 +15,33 @@ import java.util.Scanner;
 public class ProductCreator {
     public Product returnNewProduct(){
         Scanner scanner=new Scanner(System.in);
-        List <Product> products=new ArrayList<>();
+          System.out.println("---Добавить новый продукт---");
         Product product=new Product();
-        System.out.println("---Добавить продукт---");
-        System.out.println("---Название продукта---");
+        System.out.println("--- Продукт Name---");
         product.setName(scanner.nextLine());
-        System.out.println("---Цена одного продукта---");
+        System.out.println("--- Продукт Price---");
         product.setPrice(scanner.nextInt());
-        System.out.println("---Количество продукта в штуках---");
+       System.out.println("--- Продукт Count---");
         product.setCount(scanner.nextInt());
-        return  product;
+        System.out.println("---Для добавления введите любой символ\nДля отмены наберите -1---");
+        
+        String yes="";
+        yes = scanner.next();
+        if ("-1".equals(yes)){
+        System.out.println("---Продукт не добавлен ---");
+        return null;
+        }else{
+           System.out.println("---Продукт добавлен---");
+           return product;
+        }
+        
+       // System.out.println("---Название продукта---");
+       // product.setName(scanner.nextLine());
+      //  System.out.println("---Цена одного продукта---");
+       // product.setPrice(scanner.nextInt());
+      //  System.out.println("---Количество продукта в штуках---");
+      //  product.setCount(scanner.nextInt());
+      //  return  product;
                 
     }
 }

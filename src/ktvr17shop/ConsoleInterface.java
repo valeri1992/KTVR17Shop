@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interface;
+package ktvr17shop;
 
+import Interface.Manageable;
+import Interface.Manageable;
 import Interface.Manageable;
 import classes.CustomerCreator;
 import classes.ProductCreator;
