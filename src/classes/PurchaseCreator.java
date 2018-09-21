@@ -35,21 +35,33 @@ public class PurchaseCreator {
 
             System.out.println(i+1+". "+customers.get(i).getName()
                     +" "+customers.get(i).getSurname()
-                    +": "+customers.get(i).getMoney());
+                    +": "+customers.get(i).getMoney( ));
         }
         System.out.println("Запись в базу данных нажми кнопку 1 ");
         int numberProduct = scanner.nextInt();
         Product product = products.get(numberProduct - 1);
-       System.out.println("Выберите номер клиента: ");
+        System.out.println("Выберите номер клиента: ");
         int numberCustomer = scanner.nextInt();
         Customer customer = customers.get(numberCustomer - 1);
-        System.out.println("Количество: ");
+        System.out.println("Количество в шт.: ");
         int quantity = scanner.nextInt();
         Calendar c = new GregorianCalendar();
         Purchase purchase = new Purchase(null, product, customer, c.getTime(), quantity);
-        System.out.println("Нажмите кнопку 3 для просмотра товара: ");
-        purchase.getCustomer().setMoney(purchase.getCustomer().getMoney()- purchase.getProduct().getPrice()*purchase.getQuantity());
-        purchase.getProduct().setCount(purchase.getProduct().getCount()- purchase.getQuantity());
+//        System.out.println("Нажмите кнопку 3 для просмотра товара: ");
+       // purchase.getCustomer().setMoney(purchase.getCustomer().getMoney()- purchase.getProduct().getPrice()*purchase.getQuantity());
+       
+        purchase.getProduct().setCount(purchase.getProduct().getCount()- quantity);
+        if(purchase.getProduct().getCount()<0){
+        System.out.println("У Вас не хватает товара");
+        return null;
+        }
+        
+        purchase.getCustomer().setMoney(purchase.getCustomer().getMoney()-purchase.getProduct().getPrice()*quantity);
+        if (purchase.getCustomer().getMoney()<0){
+                System.out.println("Извините.У Вас не хватает денег");
+        return null;
+        }
+        
         return purchase;
     }}
 
