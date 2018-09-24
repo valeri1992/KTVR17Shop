@@ -37,7 +37,7 @@ public class PurchaseCreator {
                     +" "+customers.get(i).getSurname()
                     +": "+customers.get(i).getMoney( ));
         }
-        System.out.println("Запись в базу данных нажми кнопку 1 ");
+        System.out.println("Выберите номер продукта: ");
         int numberProduct = scanner.nextInt();
         Product product = products.get(numberProduct - 1);
         System.out.println("Выберите номер клиента: ");
@@ -47,21 +47,21 @@ public class PurchaseCreator {
         int quantity = scanner.nextInt();
         Calendar c = new GregorianCalendar();
         Purchase purchase = new Purchase(null, product, customer, c.getTime(), quantity);
-//        System.out.println("Нажмите кнопку 3 для просмотра товара: ");
+
        // purchase.getCustomer().setMoney(purchase.getCustomer().getMoney()- purchase.getProduct().getPrice()*purchase.getQuantity());
-       
-        purchase.getProduct().setCount(purchase.getProduct().getCount()- quantity);
-        if(purchase.getProduct().getCount()<0){
-        System.out.println("У Вас не хватает товара");
+// Проверка на наличие у нас Product и  у Customer денег
+//        purchase.getProduct().setCount(purchase.getProduct().getCount()- quantity);
+        if (product.getCount()< purchase.getQuantity()){
+        System.out.println("Извените,у нас нет такого количества");
         return null;
         }
-        
-        purchase.getCustomer().setMoney(purchase.getCustomer().getMoney()-purchase.getProduct().getPrice()*quantity);
-        if (purchase.getCustomer().getMoney()<0){
+
+//        purchase.getCustomer().setMoney(purchase.getCustomer().getMoney()-purchase.getProduct().getPrice()*quantity);
+        if (customer.getMoney()<= product.getPrice()*purchase.getQuantity()){
                 System.out.println("Извините.У Вас не хватает денег");
         return null;
         }
-        
+
         return purchase;
     }}
 
